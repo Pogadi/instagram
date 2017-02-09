@@ -2,3 +2,6 @@
 # http://git-scm.com/docs/gitignore
 
 node_modules
+io-config.json
+ionic.config.json
+package.json
