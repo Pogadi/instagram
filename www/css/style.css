@@ -63,7 +63,7 @@ div.informations{
     min-height: 16px;
     vertical-align: top;
     text-align: left;
-    text-overflow: ellipsis;
+    overflow: hidden;
     font-size: 16px;
     cursor: pointer;
 
