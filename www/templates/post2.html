@@ -1,8 +1,13 @@
-<ion-view title="Post" id="page8">
-  <ion-content padding="true" class="has-header">
-    <div id="post2-button-bar5" class="button-bar">
-      <button id="post2-button43" class="button button-light  button-block">Library</button>
-      <button id="post2-button44" class="button button-light  button-block">Photo</button>
-    </div>
-  </ion-content>
+<body ng-app="app">
+
+
+<ion-view  title="Post" id="page8">
+  <ion-content ng-controller="MainCtrl" padding="true">
+                <img ng-src="{{srcImage || 'img/dummy.jpg'}}" id="srcImage" width="250 " height="250" style="display: block; margin: 0 auto;"/><br/>
+
+                <button class="button button-full button-positive " ng-click="takeImage() ">Take Image</button><br/>
+
+
+            </ion-content>
 </ion-view>
+</body>
