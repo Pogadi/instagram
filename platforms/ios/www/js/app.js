@@ -7,14 +7,14 @@
 // 'starter.controllers' is found in controllers.js
 var app = angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services', 'ngCordova'])
 
-app.config(function($ionicConfigProvider, $sceDelegateProvider){
+.config(function($ionicConfigProvider, $sceDelegateProvider){
 
 
   $sceDelegateProvider.resourceUrlWhitelist([ 'self','*://www.youtube.com/**', '*://player.vimeo.com/video/**']);
 
 })
 
-app.run(function($ionicPlatform) {
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -33,7 +33,7 @@ app.run(function($ionicPlatform) {
   This directive is used to disable the "drag to open" functionality of the Side-Menu
   when you are dragging a Slider component.
 */
-app.directive('disableSideMenuDrag', ['$ionicSideMenuDelegate', '$rootScope', function($ionicSideMenuDelegate, $rootScope) {
+.directive('disableSideMenuDrag', ['$ionicSideMenuDelegate', '$rootScope', function($ionicSideMenuDelegate, $rootScope) {
     return {
         restrict: "A",
         controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
@@ -59,7 +59,7 @@ app.directive('disableSideMenuDrag', ['$ionicSideMenuDelegate', '$rootScope', fu
 /*
   This directive is used to open regular and dynamic href links inside of inappbrowser.
 */
-app.directive('hrefInappbrowser', function() {
+.directive('hrefInappbrowser', function() {
   return {
     restrict: 'A',
     replace: false,
@@ -81,35 +81,31 @@ app.directive('hrefInappbrowser', function() {
       });
     }
   };
-
-  app.controller('MainCtrl', function($scope, $cordovaCamera) {
-      $scope.takeImage = function() {
-          var options = {
-              quality: 80,
-              destinationType: Camera.DestinationType.DATA_URL,
-              sourceType: Camera.PictureSourceType.CAMERA,
-              allowEdit: true,
-              encodingType: Camera.EncodingType.JPEG,
-              targetWidth: 250,
-              targetHeight: 250,
-              popoverOptions: CameraPopoverOptions,
-              saveToPhotoAlbum: false
-          };
-
-          $cordovaCamera.getPicture(options).then(function(imageData) {
-              $scope.srcImage = "data:image/jpeg;base64," + imageData;
-          }, function(err) {
-              // error
-          });
-      }
-  });
-
 });
-
-
 
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
+app.controller('MainCtrl', function($scope, $cordovaCamera) {
+    $scope.takeImage = function() {
+        var options = {
+            quality: 80,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 250,
+            targetHeight: 250,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: true,
+        };
+
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+            $scope.srcImage = "data:image/jpeg;base64," + imageData;
+        }, function(err) {
+            // error
+        });
+    }
+});

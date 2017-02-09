@@ -108,4 +108,6 @@ app.controller('MainCtrl', function($scope, $cordovaCamera) {
             // error
         });
     }
+
+
 });
