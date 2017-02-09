@@ -99,7 +99,7 @@ app.controller('MainCtrl', function($scope, $cordovaCamera) {
             targetWidth: 250,
             targetHeight: 250,
             popoverOptions: CameraPopoverOptions,
-            saveToPhotoAlbum: false
+            saveToPhotoAlbum: true,
         };
 
         $cordovaCamera.getPicture(options).then(function(imageData) {
